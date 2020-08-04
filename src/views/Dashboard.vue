@@ -9,10 +9,15 @@
     </v-row>
 
     <v-row>
-      <v-col v-for="statistic in statistics" :key="`${statistic.title}`" cols="12" md="6" lg="4">
+      <v-col
+        v-for="statistic in statistics"
+        :key="`${statistic.title}`"
+        cols="12"
+        md="6"
+        lg="3"
+      >
         <StatisticCard :statistic="statistic" />
       </v-col>
-      
     </v-row>
 
     <v-row>
@@ -21,6 +26,25 @@
       </v-col>
       <v-col cols="12" md="4">
         <EventTimeline :timeline="timeline" />
+      </v-col>
+    </v-row>
+
+    <v-row id="below-the-fold">
+      <v-col cols="12" md="8">
+        <EmployeesTable :employees="employees" @select-employee="setEmployee" />
+      </v-col>
+      <v-col cols="12" md="4">
+        <EventTimeline :timeline="timeline" />
+      </v-col>
+    </v-row>
+
+    <v-row id="more-content">
+      <v-col>
+        <v-skeleton-loader
+          ref="skeleton"
+          type="table"
+          class="mx-auto"
+        ></v-skeleton-loader>
       </v-col>
     </v-row>
 
